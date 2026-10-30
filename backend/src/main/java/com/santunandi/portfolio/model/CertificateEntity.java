@@ -1,26 +1,21 @@
 package com.santunandi.portfolio.model;
 
-import jakarta.persistence.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Entity
-@Table(name = "certificates")
+@Document(collection = "certificates")
 public class CertificateEntity {
 
     @Id
     private String id;
 
-    @Column(nullable = false)
     private String title;
-
     private String issuer;
     private String issueDate;
     private String credentialId;
     private String verificationUrl;
     private String category;
-
-    @Column(length = 1000)
     private String skillsJson;
-
     private boolean isVerified;
     private boolean downloadAuthorized;
 

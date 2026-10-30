@@ -12,6 +12,12 @@ dist
 dist-ssr
 *.local
 
+# Backend builds & storage
+target/
+**/target/
+vault-storage/
+**/dist/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

@@ -1,34 +1,27 @@
 package com.santunandi.portfolio.model;
 
-import jakarta.persistence.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Entity
-@Table(name = "academic_records")
+@Document(collection = "academic_records")
 public class AcademicRecordEntity {
 
     @Id
     private String id;
 
-    @Column(nullable = false)
     private String level; // class10, class12, university
-
-    @Column(nullable = false)
     private String title;
-
     private String institution;
     private String boardOrUniversity;
     private String scoreLabel;
     private String scoreValue;
     private String passingYear;
-
-    @Column(length = 2000)
     private String highlightsJson;
 
     private String documentTitle;
     private String documentType;
     private String documentSize;
 
-    @Enumerated(EnumType.STRING)
     private DocumentVisibility visibility; // PUBLIC, REDACTED, PRIVATE
 
     private boolean isVerified;

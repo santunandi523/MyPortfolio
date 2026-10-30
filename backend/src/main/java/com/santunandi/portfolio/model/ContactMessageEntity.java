@@ -1,28 +1,20 @@
 package com.santunandi.portfolio.model;
 
-import jakarta.persistence.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 import java.time.LocalDateTime;
 
-@Entity
-@Table(name = "contact_messages")
+@Document(collection = "contact_messages")
 public class ContactMessageEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String id;
 
-    @Column(nullable = false)
     private String name;
-
-    @Column(nullable = false)
     private String email;
-
     private String organization;
     private String subject;
-
-    @Column(length = 4000, nullable = false)
     private String message;
-
     private LocalDateTime createdAt = LocalDateTime.now();
 
     public ContactMessageEntity() {}
@@ -36,8 +28,8 @@ public class ContactMessageEntity {
         this.createdAt = LocalDateTime.now();
     }
 
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
+    public String getId() { return id; }
+    public void setId(String id) { this.id = id; }
 
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }

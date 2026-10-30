@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@600;700;800&display=swap');
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-ice-silver: #E8EDF2;
+    --color-deep-aubergine: #301934;
+    --color-marigold: #F4B942;
+    --color-aubergine-dark: #1E0F21;
+    --color-aubergine-night: #120914;
+    --color-aubergine-surface: #261329;
+    --color-aubergine-card: #200E23;
+    --color-muted-lavender: #A592AD;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--color-aubergine-night);
+    color: var(--color-ice-silver);
+    transition: background-color 0.25s ease, color 0.25s ease;
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  .font-display {
+    font-family: 'Syne', sans-serif;
+  }
+
+  .font-sans {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+/* Light Mode Overrides */
+html.light body {
+  background-color: #F8F9FA;
+  color: #1E0F21;
+}
+
+html.light .bg-aubergine-night {
+  background-color: #F8F9FA !important;
+}
+
+html.light .bg-aubergine-dark {
+  background-color: #EEF1F5 !important;
+}
+
+html.light .bg-deep-aubergine {
+  background-color: #301934 !important;
+  color: #E8EDF2 !important;
+}
+
+html.light .bg-aubergine-card {
+  background-color: #FFFFFF !important;
+  border-color: rgba(48, 25, 52, 0.1) !important;
+  color: #1E0F21 !important;
+  box-shadow: 0 4px 20px -2px rgba(48, 25, 52, 0.04);
+}
+
+html.light .bg-aubergine-surface {
+  background-color: #F0EDF3 !important;
+}
+
+html.light .text-ice-silver {
+  color: #1E0F21 !important;
+}
+
+html.light .text-muted-lavender {
+  color: #5E5066 !important;
+}
+
+html.light .border-silver-subtle {
+  border-color: rgba(48, 25, 52, 0.1) !important;
+}
+
+/* Editorial Dividers and Subtle Frames */
+.editorial-divider {
+  height: 1px;
+  background: linear-gradient(to right, rgba(232, 237, 242, 0.15), rgba(232, 237, 242, 0.05), transparent);
+}
+
+html.light .editorial-divider {
+  background: linear-gradient(to right, rgba(48, 25, 52, 0.15), rgba(48, 25, 52, 0.05), transparent);
+}
+
+.subtle-border {
+  border: 1px solid rgba(232, 237, 242, 0.12);
+}
+
+html.light .subtle-border {
+  border: 1px solid rgba(48, 25, 52, 0.1);
+}
+
+/* Document Frame styling */
+.vault-document-frame {
+  box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(232, 237, 242, 0.12);
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #140A16;
+}
+
+html.light ::-webkit-scrollbar-track {
+  background: #EEF1F5;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3A1F40;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #F4B942;
+}

@@ -1,20 +1,19 @@
 package com.santunandi.portfolio.model;
 
-import jakarta.persistence.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Entity
-@Table(name = "projects")
+@Document(collection = "projects")
 public class ProjectEntity {
 
     @Id
     private String id;
 
-    @Column(unique = true, nullable = false)
+    @Indexed(unique = true)
     private String slug;
 
-    @Column(nullable = false)
     private String title;
-
     private String tagline;
     private boolean featured;
     private String category;
@@ -23,17 +22,9 @@ public class ProjectEntity {
     private String duration;
     private String githubUrl;
     private String liveUrl;
-
-    @Column(length = 1500)
     private String technologiesJson;
-
-    @Column(length = 3000)
     private String overview;
-
-    @Column(length = 3000)
     private String problemStatement;
-
-    @Column(length = 3000)
     private String solution;
 
     public ProjectEntity() {}

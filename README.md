@@ -121,65 +121,30 @@ mvn spring-boot:run
 
 ```
 d:\Portfolio
-├── backend/                             # Enterprise Spring Boot 3 Backend
+├── backend/                             # Enterprise Spring Boot 3 Backend (MongoDB)
 │   ├── src/main/java/com/santunandi/portfolio/
 │   │   ├── config/                      # SecurityConfig, JwtUtil, JwtAuthFilter
 │   │   ├── controller/                  # Public, Admin, Auth, DocumentStream Controllers
-│   │   ├── model/                       # JPA Entities (Academic, Project, Certificate, Contact)
-│   │   ├── repository/                  # Spring Data Repositories
+│   │   ├── model/                       # MongoDB Documents (Academic, Project, Certificate, Contact)
+│   │   ├── repository/                  # Spring Data MongoDB Repositories
 │   │   ├── service/                     # DocumentStorageService, DataInitializer
 │   │   └── PortfolioApplication.java
 │   ├── src/main/resources/
-│   │   └── application.properties       # H2/Postgres, file upload size, JWT secret
+│   │   └── application.properties       # MongoDB URI (localhost:27017/portfoliodb)
 │   └── pom.xml
-├── public/
-│   └── favicon.svg                      # Custom monogram personal brand mark
-├── src/
-│   ├── components/
-│   │   ├── documents/                   # Authentic SVG/Canvas document renders
-│   │   │   ├── Class10MarksheetRender.tsx
-│   │   │   ├── Class12MarksheetRender.tsx
-│   │   │   ├── UniversityTranscriptRender.tsx
-│   │   │   └── CertificateRender.tsx
-│   │   ├── icons/
-│   │   │   └── BrandIcons.tsx           # GitHub, LinkedIn, LeetCode, Codolio
-│   │   ├── AchievementConstellation.tsx # Interactive milestone graph
-│   │   ├── DocumentViewerModal.tsx      # Zoom, pan, fullscreen, redaction viewer
-│   │   ├── RecruiterQuickViewModal.tsx  # 60-second recruiter executive summary
-│   │   ├── StatCounter.tsx              # Animated metric counter
-│   │   ├── Navbar.tsx                   # Responsive luxury navigation
-│   │   └── Footer.tsx                   # Executive footer with brand links
-│   ├── context/
-│   │   ├── PortfolioContext.tsx         # Global reactive state & admin mutations
-│   │   └── ThemeContext.tsx             # Dark / Light theme provider
-│   ├── data/
-│   │   └── portfolioData.ts             # Authentic initial dataset
-│   ├── pages/
-│   │   ├── HomePage.tsx                 # Hero & digital identity
-│   │   ├── AboutPage.tsx                # Career journey & practical skills
-│   │   ├── EducationVaultPage.tsx       # The Academic Vault
-│   │   ├── AchievementsPage.tsx         # Coding Hall of Fame
-│   │   ├── CertificatesPage.tsx         # Filterable Certificate Gallery
-│   │   ├── ProjectsPage.tsx             # Production software index
-│   │   ├── FoodyHubCaseStudyPage.tsx    # FoodyHub architecture & AI demo
-│   │   ├── PackSureCaseStudyPage.tsx    # PackSure OCR & rules engine demo
-│   │   ├── ResumePage.tsx               # Resume Center & PDF viewer
-│   │   ├── ContactPage.tsx              # Validated contact form & channels
-│   │   ├── AdminDashboardPage.tsx       # Protected management dashboard
-│   │   └── NotFoundPage.tsx             # Custom 404 handler
-│   ├── services/
-│   │   ├── storageService.ts            # LocalStorage persistence & backup
-│   │   └── api.ts                       # REST API client with fallback
-│   ├── types/
-│   │   └── index.ts                     # Strict TypeScript interfaces
-│   ├── App.tsx                          # App routing & providers
-│   ├── index.css                        # Tailwind 4 tokens, scrollbars & glow
-│   └── main.tsx
-├── index.html
-├── package.json
-├── tailwind.config.js
-├── tsconfig.json
-└── vite.config.ts
+└── frontend/                            # React 19 JavaScript Client
+    ├── src/
+    │   ├── components/                  # Authentic SVG/Canvas document renders, UI widgets
+    │   ├── context/                     # Global state & Dark/Light theme providers (.jsx)
+    │   ├── data/                        # Authentic dataset (portfolioData.js)
+    │   ├── pages/                       # All route pages (.jsx)
+    │   ├── services/                    # api.js & storageService.js
+    │   ├── App.jsx
+    │   └── main.jsx
+    ├── public/                          # Static assets and verified documents
+    ├── index.html
+    ├── vite.config.js
+    └── package.json
 ```
 
 ---
