@@ -1,9 +1,10 @@
 import React from 'react';
 import { ExternalLink, Terminal, Award, Calendar, CheckCircle2 } from 'lucide-react';
 import { usePortfolio } from '../context/PortfolioContext';
+import { AchievementConstellation } from '../components/AchievementConstellation';
 
 export const AchievementsPage = () => {
-  const { codingStats, profile, badges } = usePortfolio();
+  const { codingStats, profile } = usePortfolio();
 
   return (
     <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-20">
@@ -141,25 +142,11 @@ export const AchievementsPage = () => {
             Key Algorithmic Milestones
           </h2>
           <p className="text-xs sm:text-sm text-[#A592AD] mt-1">
-            Documented achievements reflecting disciplined problem solving and contest ranking.
+            Documented achievements reflecting disciplined problem solving and contest ranking. Click any milestone to explore connected projects and credentials.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {badges.map((badge) => (
-            <div
-              key={badge.id}
-              className="p-5 rounded-lg border border-[#E8EDF2]/10 bg-[#160A18] space-y-3"
-            >
-              <div className="flex items-center justify-between text-xs font-mono text-[#A592AD]">
-                <span>{badge.issuer}</span>
-                <span className="text-[#F4B942]">{badge.dateEarned}</span>
-              </div>
-              <h3 className="font-bold text-sm text-[#E8EDF2]">{badge.title}</h3>
-              <p className="text-xs text-[#A592AD] leading-relaxed">{badge.description}</p>
-            </div>
-          ))}
-        </div>
+        <AchievementConstellation />
       </div>
     </div>
   );
