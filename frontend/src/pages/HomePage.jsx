@@ -204,9 +204,16 @@ export const HomePage = () => {
                 </p>
 
                 {/* Score badge */}
-                <div className="py-1.5 px-2.5 rounded bg-[#301934]/60 border border-[#E8EDF2]/10 inline-block">
-                  <span className="text-[11px] text-[#A592AD] mr-2">{record.scoreLabel}:</span>
-                  <span className="text-xs font-mono font-bold text-[#F4B942]">{record.scoreValue}</span>
+                <div className="py-1 px-2.5 rounded-md bg-[#301934]/60 border border-[#E8EDF2]/10 inline-flex items-center gap-1.5 flex-wrap">
+                  <span className="text-[11px] text-[#A592AD]">{record.scoreLabel}:</span>
+                  <span className="text-xs font-mono font-bold text-[#F4B942]">
+                    {record.scoreValue.includes('(') ? record.scoreValue.split('(')[0].trim() : record.scoreValue}
+                  </span>
+                  {record.scoreValue.includes('(') && (
+                    <span className="px-1.5 py-0.5 rounded text-[9px] font-sans font-medium bg-[#F4B942]/10 text-[#F4B942] border border-[#F4B942]/20 whitespace-nowrap">
+                      {record.scoreValue.match(/\((.*?)\)/)?.[1] || '5th Sem Pending'}
+                    </span>
+                  )}
                 </div>
 
                 <p className="text-xs text-[#A592AD]/90 line-clamp-2 leading-relaxed">

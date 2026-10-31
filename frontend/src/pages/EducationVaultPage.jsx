@@ -42,12 +42,20 @@ export const EducationVaultPage = () => {
                 </p>
               </div>
 
-              <div className="flex items-center gap-4 text-xs font-mono text-[#A592AD]">
-                <span>{record.duration || record.passingYear}</span>
-                <span>•</span>
-                <span className="text-[#F4B942] font-semibold text-sm">
-                  {record.scoreLabel}: {record.scoreValue}
-                </span>
+              <div className="flex flex-wrap sm:flex-nowrap items-center gap-2.5 text-xs font-mono shrink-0 whitespace-nowrap self-start md:self-auto">
+                <span className="text-[#A592AD]">{record.duration || record.passingYear}</span>
+                <span className="text-[#E8EDF2]/20 hidden sm:inline">•</span>
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#231026] border border-[#E8EDF2]/12">
+                  <span className="text-[11px] text-[#A592AD]">{record.scoreLabel}:</span>
+                  <span className="text-xs sm:text-sm font-bold text-[#F4B942]">
+                    {record.scoreValue.includes('(') ? record.scoreValue.split('(')[0].trim() : record.scoreValue}
+                  </span>
+                  {record.scoreValue.includes('(') && (
+                    <span className="px-2 py-0.5 rounded text-[10px] font-sans font-medium bg-[#F4B942]/10 text-[#F4B942] border border-[#F4B942]/20">
+                      {record.scoreValue.match(/\((.*?)\)/)?.[1] || '5th Sem Pending'}
+                    </span>
+                  )}
+                </div>
               </div>
             </div>
 
