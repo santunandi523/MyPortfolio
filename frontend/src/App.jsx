@@ -7,7 +7,6 @@ import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { DocumentViewerModal } from './components/DocumentViewerModal';
 import { RecruiterQuickViewModal } from './components/RecruiterQuickViewModal';
-import { CursorGlow } from './components/CursorGlow';
 // Pages
 import { HomePage } from './pages/HomePage';
 import { AboutPage } from './pages/AboutPage';
@@ -43,10 +42,7 @@ export const App = () => {
       <PortfolioProvider>
         <BrowserRouter>
           <ScrollToTop />
-          <div className="min-h-screen flex flex-col bg-[#120914] text-[#E8EDF2] font-sans antialiased selection:bg-[#F4B942] selection:text-[#301934] relative">
-            {/* Background Marigold Cursor Glow */}
-            <CursorGlow />
-
+          <div className="min-h-screen flex flex-col bg-[#120914] text-[#E8EDF2] font-sans antialiased selection:bg-[#F4B942] selection:text-[#301934]">
             {/* Global Navigation */}
             <Navbar />
 
