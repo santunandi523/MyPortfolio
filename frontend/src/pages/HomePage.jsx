@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { ArrowRight, Download, ExternalLink, Eye, Terminal, BookOpen, Layers } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from '../components/icons/BrandIcons';
 import { usePortfolio } from '../context/PortfolioContext';
+import { RotatingTitle } from '../components/RotatingTitle';
 
 export const HomePage = () => {
   const { profile, academicVault, codingStats, projects, openDocumentViewer, openRecruiterView } = usePortfolio();
@@ -20,11 +21,11 @@ export const HomePage = () => {
                 <span className="text-xs font-mono tracking-wider uppercase text-[#F4B942]">
                   Portfolio & Technical Profile
                 </span>
-                <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold font-display tracking-tight text-[#E8EDF2] leading-[1.08]">
-                  Santu Nandi
+                <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold font-display tracking-tight text-[#E8EDF2] leading-[1.08] min-h-[1.2em] flex items-baseline">
+                  <RotatingTitle />
                 </h1>
                 <p className="text-lg sm:text-xl font-medium text-[#F4B942]/95 font-sans">
-                  Java Full Stack Developer
+                  Crafting resilient backend services, distributed systems & full-stack applications.
                 </p>
                 <p className="text-xs sm:text-sm text-[#A592AD] font-mono">
                   Chandigarh University • B.E. Computer Science & Engineering (8.25 CGPA)
