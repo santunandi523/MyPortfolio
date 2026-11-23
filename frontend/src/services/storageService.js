@@ -2,11 +2,11 @@ import { initialProfileData, initialAcademicVault, initialCodingStats, initialCe
 const STORAGE_KEYS = {
     PROFILE: 'santu_portfolio_profile_v6',
     ACADEMIC_VAULT: 'santu_portfolio_academic_v6',
-    CODING_STATS: 'santu_portfolio_coding_v5',
-    CERTIFICATES: 'santu_portfolio_certs_v5',
-    BADGES: 'santu_portfolio_badges_v5',
-    PROJECTS: 'santu_portfolio_projects_v5',
-    SKILLS: 'santu_portfolio_skills_v5',
+    CODING_STATS: 'santu_portfolio_coding_v6',
+    CERTIFICATES: 'santu_portfolio_certs_v6',
+    BADGES: 'santu_portfolio_badges_v6',
+    PROJECTS: 'santu_portfolio_projects_v6',
+    SKILLS: 'santu_portfolio_skills_v6',
     ADMIN_AUTH: 'santu_portfolio_admin_auth',
 };
 // Admin default passkey
@@ -39,7 +39,9 @@ export const storageService = {
     getCodingStats() {
         try {
             const data = localStorage.getItem(STORAGE_KEYS.CODING_STATS);
-            return data ? JSON.parse(data) : initialCodingStats;
+            if (!data) return initialCodingStats;
+            const parsed = JSON.parse(data);
+            return Array.isArray(parsed) && parsed.length > 0 ? parsed : initialCodingStats;
         }
         catch {
             return initialCodingStats;
@@ -51,7 +53,9 @@ export const storageService = {
     getCertificates() {
         try {
             const data = localStorage.getItem(STORAGE_KEYS.CERTIFICATES);
-            return data ? JSON.parse(data) : initialCertificates;
+            if (!data) return initialCertificates;
+            const parsed = JSON.parse(data);
+            return Array.isArray(parsed) && parsed.length > 0 ? parsed : initialCertificates;
         }
         catch {
             return initialCertificates;
@@ -63,7 +67,9 @@ export const storageService = {
     getBadges() {
         try {
             const data = localStorage.getItem(STORAGE_KEYS.BADGES);
-            return data ? JSON.parse(data) : initialBadges;
+            if (!data) return initialBadges;
+            const parsed = JSON.parse(data);
+            return Array.isArray(parsed) && parsed.length > 0 ? parsed : initialBadges;
         }
         catch {
             return initialBadges;

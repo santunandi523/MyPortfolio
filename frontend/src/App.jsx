@@ -30,14 +30,33 @@ const ScrollToTop = () => {
     return null;
 };
 // Smooth page transition wrapper
-const PageTransition = ({ children }) => {
+const AnimatedRoutes = () => {
     const location = useLocation();
-    return (<AnimatePresence mode="wait">
-      <motion.div key={location.pathname} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.25, ease: 'easeInOut' }}>
-        {children}
-      </motion.div>
-    </AnimatePresence>);
+    return (
+        <motion.div
+            key={location.pathname}
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.2, ease: 'easeOut' }}
+        >
+            <Routes location={location}>
+                <Route path="/" element={<HomePage />}/>
+                <Route path="/about" element={<AboutPage />}/>
+                <Route path="/education" element={<EducationVaultPage />}/>
+                <Route path="/achievements" element={<AchievementsPage />}/>
+                <Route path="/certificates" element={<CertificatesPage />}/>
+                <Route path="/projects" element={<ProjectsPage />}/>
+                <Route path="/projects/foodyhub" element={<FoodyHubCaseStudyPage />}/>
+                <Route path="/projects/packsure" element={<PackSureCaseStudyPage />}/>
+                <Route path="/resume" element={<ResumePage />}/>
+                <Route path="/contact" element={<ContactPage />}/>
+                <Route path="/admin" element={<AdminDashboardPage />}/>
+                <Route path="*" element={<NotFoundPage />}/>
+            </Routes>
+        </motion.div>
+    );
 };
+
 export const App = () => {
     return (<ThemeProvider>
       <PortfolioProvider>
@@ -52,22 +71,7 @@ export const App = () => {
 
             {/* Main Page Viewport */}
             <main className="flex-1">
-              <PageTransition>
-                <Routes>
-                  <Route path="/" element={<HomePage />}/>
-                  <Route path="/about" element={<AboutPage />}/>
-                  <Route path="/education" element={<EducationVaultPage />}/>
-                  <Route path="/achievements" element={<AchievementsPage />}/>
-                  <Route path="/certificates" element={<CertificatesPage />}/>
-                  <Route path="/projects" element={<ProjectsPage />}/>
-                  <Route path="/projects/foodyhub" element={<FoodyHubCaseStudyPage />}/>
-                  <Route path="/projects/packsure" element={<PackSureCaseStudyPage />}/>
-                  <Route path="/resume" element={<ResumePage />}/>
-                  <Route path="/contact" element={<ContactPage />}/>
-                  <Route path="/admin" element={<AdminDashboardPage />}/>
-                  <Route path="*" element={<NotFoundPage />}/>
-                </Routes>
-              </PageTransition>
+              <AnimatedRoutes />
             </main>
 
             {/* Global Footer */}

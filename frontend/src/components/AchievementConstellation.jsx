@@ -13,9 +13,10 @@ export const AchievementConstellation = () => {
     { id: 'project', label: 'Engineered Systems' },
     { id: 'academic', label: 'Academic Honors' },
   ];
+  const allBadges = Array.isArray(badges) && badges.length > 0 ? badges : [];
   const filteredBadges = activeCategory === 'all'
-    ? badges
-    : badges.filter((b) => b.category === activeCategory);
+    ? allBadges
+    : allBadges.filter((b) => b.category === activeCategory);
   const getBadgeIcon = (category, isHighlight) => {
     switch (category) {
       case 'contest':
@@ -34,7 +35,7 @@ export const AchievementConstellation = () => {
     {/* Category Pills */}
     <div className="flex flex-wrap items-center justify-between gap-3">
       <div className="flex flex-wrap gap-2">
-        {categories.map((cat) => (<button key={cat.id} onClick={() => setActiveCategory(cat.id)} className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all border ${activeCategory === cat.id
+        {categories.map((cat) => (<button key={cat.id} onClick={() => setActiveCategory(cat.id)} className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-colors border ${activeCategory === cat.id
           ? 'bg-[#F4B942] text-[#301934] border-[#F4B942] shadow-sm'
           : 'bg-[#261329] text-[#E8EDF2]/80 border-[#E8EDF2]/10 hover:border-[#F4B942]/40 hover:text-[#E8EDF2]'}`}>
           {cat.label}
@@ -50,9 +51,14 @@ export const AchievementConstellation = () => {
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       {filteredBadges.map((badge) => {
         const isSelected = selectedBadge?.id === badge.id;
-        return (<motion.div key={badge.id} layout onClick={() => setSelectedBadge(isSelected ? null : badge)} className={`cursor-pointer rounded-xl p-5 border transition-all relative overflow-hidden flex flex-col justify-between ${badge.isHighlight
-          ? 'bg-gradient-to-br from-[#301934] to-[#200F23] border-[#F4B942]/40 hover:border-[#F4B942] marigold-glow-subtle'
-          : 'bg-[#220F26] border-[#E8EDF2]/10 hover:border-[#E8EDF2]/30'}`}>
+        return (
+          <div
+            key={badge.id}
+            onClick={() => setSelectedBadge(isSelected ? null : badge)}
+            className={`cursor-pointer rounded-xl p-5 border transition-colors relative overflow-hidden flex flex-col justify-between ${badge.isHighlight
+              ? 'bg-gradient-to-br from-[#301934] to-[#200F23] border-[#F4B942]/40 hover:border-[#F4B942] marigold-glow-subtle'
+              : 'bg-[#220F26] border-[#E8EDF2]/10 hover:border-[#E8EDF2]/30'}`}
+          >
           {badge.isHighlight && (<div className="absolute top-0 right-0 bg-[#F4B942] text-[#301934] text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-bl">
             Key Milestone
           </div>)}
@@ -140,7 +146,7 @@ export const AchievementConstellation = () => {
               </motion.div>
             )}
           </AnimatePresence>
-        </motion.div>);
+        </div>);
       })}
     </div>
   </div>);
